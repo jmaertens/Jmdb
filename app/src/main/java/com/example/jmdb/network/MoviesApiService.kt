@@ -8,7 +8,7 @@ import retrofit2.http.GET
 
 //https://api.themoviedb.org/3/discover/movie?api_key=dd66da20608e332b5fb77e67e213f143
 
-private const val BASE_URL = "https://api.themoviedb.org/3/discover/movie?api_key=dd66da20608e332b5fb77e67e213f143"
+private const val BASE_URL = "https://api.themoviedb.org/3/discover/movie/"
 private const val KEY = "dd66da20608e332b5fb77e67e213f143"
 
 //Use Retrofit Builder with ScalarsConverterFactory and base_url
@@ -19,7 +19,7 @@ private val retrofit = Retrofit.Builder()
 
 //Implement MoviesApiService interface with @GET getProperties returning a String
 interface MoviesApiService{
-    @GET()
+    @GET("?api_key=$KEY")
     fun getProperties():
             Call<String>
 }

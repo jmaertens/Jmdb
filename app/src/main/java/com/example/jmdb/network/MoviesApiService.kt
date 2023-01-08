@@ -1,8 +1,10 @@
 package com.example.jmdb.network
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
 
@@ -11,9 +13,14 @@ import retrofit2.http.GET
 private const val BASE_URL = "https://api.themoviedb.org/3/discover/movie/"
 private const val KEY = "dd66da20608e332b5fb77e67e213f143"
 
-//Use Retrofit Builder with ScalarsConverterFactory and base_url
+//Using Moshi builder to create a moshi object
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
+
+//Using Retrofit Builder with ScalarsConverterFactory and base_url
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
 
@@ -21,7 +28,7 @@ private val retrofit = Retrofit.Builder()
 interface MoviesApiService{
     @GET("?api_key=$KEY")
     fun getProperties():
-            Call<String>
+            Call<MoviesProperty>
 }
 
 //Create an object called MoviesApi to access the RetrofitService

@@ -9,8 +9,11 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
 
-
+//Example get discover first 10 movies
 //https://api.themoviedb.org/3/discover/movie?api_key=dd66da20608e332b5fb77e67e213f143
+
+//Example get poster details (narnia)
+//https://image.tmdb.org/t/p/original/iREd0rNCjYdf5Ar0vfaW32yrkm.jpg
 
 private const val BASE_URL = "https://api.themoviedb.org/3/discover/movie/"
 private const val KEY = "dd66da20608e332b5fb77e67e213f143"

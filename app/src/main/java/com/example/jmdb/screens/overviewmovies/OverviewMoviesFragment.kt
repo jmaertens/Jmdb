@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.example.jmdb.R
 import com.example.jmdb.databinding.FragmentOverviewMoviesBinding
+import com.example.jmdb.databinding.GridViewItemBinding
 
 class OverviewMoviesFragment : Fragment() {
 
@@ -18,7 +19,7 @@ class OverviewMoviesFragment : Fragment() {
         ViewModelProvider(this).get(OverviewMoviesViewModel::class.java)
     }
 
-    private lateinit var binding: FragmentOverviewMoviesBinding
+    private lateinit var binding: GridViewItemBinding
 
 
     override fun onCreateView(
@@ -27,7 +28,7 @@ class OverviewMoviesFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        binding = FragmentOverviewMoviesBinding.inflate(inflater, container, false)
+        binding = GridViewItemBinding.inflate(inflater, container, false)
 
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
@@ -37,9 +38,9 @@ class OverviewMoviesFragment : Fragment() {
         binding.viewModel = viewModel
 
 
-        binding.detailsButton.setOnClickListener{ view: View ->
+        /*binding.detailsButton.setOnClickListener{ view: View ->
             view.findNavController().navigate(R.id.action_overviewMoviesFragment_to_detailsMovieFragment)
-        }
+        }*/
 
 
         return binding.root

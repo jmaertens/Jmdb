@@ -9,9 +9,10 @@ import com.bumptech.glide.Glide
     @BindingAdapter("imageUrl")
     fun bindImage(imgView: ImageView, imgUrl: String?) {
         imgUrl?.let {
-            val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
+            val imgUri = it.toUri().buildUpon().build()
+            val baseUrl = "https://image.tmdb.org/t/p/original"
             Glide.with(imgView.context)
-                .load(imgUri)
+                .load(baseUrl + imgUri)
                 .into(imgView)
         }
     }

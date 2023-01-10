@@ -24,10 +24,10 @@ class OverviewMoviesViewModel : ViewModel() {
         get() = _status
 
 
-    private val _property = MutableLiveData<Movie>()
+    private val _properties = MutableLiveData<List<Movie>>()
 
-    val property: LiveData<Movie>
-        get() = _property
+    val properties: LiveData<List<Movie>>
+        get() = _properties
 
     //Coroutine job
     private var viewModelJob = Job()
@@ -47,7 +47,7 @@ class OverviewMoviesViewModel : ViewModel() {
             try {
                 var listResult = getPropertiesDeferred
                 if(listResult.results.isNotEmpty()){
-                    _property.value = listResult.results[0]
+                    _properties.value = listResult.results
                 }
                 _status.value = "Succes: ${listResult?.results?.size} Movies properties retrieved"
             } catch (e: Exception){

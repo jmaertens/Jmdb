@@ -19,7 +19,7 @@ class OverviewMoviesFragment : Fragment() {
         ViewModelProvider(this).get(OverviewMoviesViewModel::class.java)
     }
 
-    private lateinit var binding: GridViewItemBinding
+    private lateinit var binding: FragmentOverviewMoviesBinding
 
 
     override fun onCreateView(
@@ -27,9 +27,7 @@ class OverviewMoviesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
-        binding = GridViewItemBinding.inflate(inflater, container, false)
-
+        binding = FragmentOverviewMoviesBinding.inflate(inflater, container, false)
 
         // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.lifecycleOwner = this
@@ -37,11 +35,8 @@ class OverviewMoviesFragment : Fragment() {
         // Giving the binding access to the OverviewViewModel
         binding.viewModel = viewModel
 
-
-        /*binding.detailsButton.setOnClickListener{ view: View ->
-            view.findNavController().navigate(R.id.action_overviewMoviesFragment_to_detailsMovieFragment)
-        }*/
-
+        //Set binding.Postergridadapter to a new postergridadapter
+        binding.posterGrid.adapter = PosterGridAdapter()
 
         return binding.root
     }

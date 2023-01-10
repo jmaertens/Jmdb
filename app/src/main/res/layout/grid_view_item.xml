@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
           <variable
-                name="viewModel"
-                type="com.example.jmdb.screens.overviewmovies.OverviewMoviesViewModel" />
+                name="property"
+                type="com.example.jmdb.network.Movie" />
     </data>
     <ImageView
-        android:id="@+id/mars_image"
+        android:id="@+id/movie_image"
         android:layout_width="match_parent"
         android:layout_height="170dp"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
         android:padding="2dp"
-        app:imageUrl="@{viewModel.property.posterPath}"
+        app:imageUrl="@{property.posterPath}"
         tools:src="@tools:sample/backgrounds/scenic"/>
 </layout>

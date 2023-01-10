@@ -14,13 +14,16 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+enum class MoviesApiStatus { LOADING, ERROR, DONE }
+
+
 class OverviewMoviesViewModel : ViewModel() {
 
     // The internal MutableLiveData String that stores the status of the most recent request
-    private val _status = MutableLiveData<String>()
+    private val _status = MutableLiveData<MoviesApiStatus>()
 
     // The external immutable LiveData for the request status String
-    val status: LiveData<String>
+    val status: LiveData<MoviesApiStatus>
         get() = _status
 
 
@@ -45,13 +48,15 @@ class OverviewMoviesViewModel : ViewModel() {
             var getPropertiesDeferred = MoviesApi.retrofitService.getProperties().await()
 
             try {
+                _status.value = MoviesApiStatus.LOADING
                 var listResult = getPropertiesDeferred
                 if(listResult.results.isNotEmpty()){
                     _properties.value = listResult.results
                 }
-                _status.value = "Succes: ${listResult?.results?.size} Movies properties retrieved"
+                _status.value = MoviesApiStatus.DONE
             } catch (e: Exception){
-                _status.value = "Failure: " + e.message
+                _status.value = MoviesApiStatus.ERROR
+                _properties.value = ArrayList()
             }
         }
     }

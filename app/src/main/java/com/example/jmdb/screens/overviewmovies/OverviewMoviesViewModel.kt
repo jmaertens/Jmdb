@@ -42,6 +42,13 @@ class OverviewMoviesViewModel : ViewModel() {
         getMoviesOverview()
     }
 
+    //_navigateToSelectedProperty MutableLiveData externalized as LiveData
+    private val _navigateToSelectedProperty = MutableLiveData<Movie>()
+
+    val navigateToSelectedProperty: LiveData<Movie>
+        get() = _navigateToSelectedProperty
+
+
     //Sets the value of the status LiveData to the Movies API status.
     private fun getMoviesOverview() {
         coroutineScope.launch {
@@ -65,5 +72,13 @@ class OverviewMoviesViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+    }
+
+    fun displayPropertyDetails(movie : Movie){
+        _navigateToSelectedProperty.value = movie
+    }
+
+    fun displayPropertyDetailsComplete(){
+        _navigateToSelectedProperty.value = null
     }
 }

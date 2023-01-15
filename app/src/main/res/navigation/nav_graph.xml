@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/overviewFavouritesFragment"
         android:name="com.example.jmdb.screens.overviewfavourites.OverviewFavouritesFragment"
-        android:label="fragment_overview_favourites"
+        android:label="Favourite movies"
         tools:layout="@layout/fragment_overview_favourites" />
     <fragment
         android:id="@+id/detailsMovieFragment"

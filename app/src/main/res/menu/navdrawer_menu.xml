@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/overviewFragment"
+        android:id="@+id/overviewMoviesFragment"
         android:title="Overview" />
     <item
-        android:id="@+id/favouritesFragment"
+        android:id="@+id/overviewFavouritesFragment"
         android:title="Favourites" />
 </menu>
